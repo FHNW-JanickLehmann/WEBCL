@@ -4,26 +4,27 @@
     <meta charset="UTF-8">
     <title>CSS Triangle</title>
     <style>
-
+        :root {
+            --triangle-size: 100px;
+        }
         #one {
-            width:                  0;
-            aspect-ratio:           1 / 1;
-            border-style:           solid;
-            --triangle-size:        100px;
-            --triangle-side-size:   calc(var(--triangle-size) / 2);
-            border-width:           var(--triangle-size)
-                                    var(--triangle-side-size)
-                                    0
-                                    var(--triangle-side-size);
-            border-color:     blue transparent transparent transparent ;
+            width:            0;
+            border-style:     solid;
+            border-width:     var(--triangle-size) calc(var(--triangle-size) / 2) 0;
+            border-color:     blue transparent transparent transparent;
         }
         #two {
             background-color: red;
-            width:            100px; /* for experiments only */
+            width:            var(--triangle-size);
+            aspect-ratio:     1 / 1;
+            clip-path:        polygon(0 0, 50% 100%, 100% 0);
         }
         #three {
-            background-color: green;
-            width:            100px; /* for experiments only */
+            width:            var(--triangle-size);
+            aspect-ratio:     1 / 1;
+            background-image: linear-gradient(45deg, green 50%, transparent 50%);
+            transform:        translateY(calc(-1*var(--triangle-size)/2)) scale(calc(1/sqrt(2))) scaleY(2) rotate(-45deg);
+            overflow:         hidden;
         }
 
     </style>
