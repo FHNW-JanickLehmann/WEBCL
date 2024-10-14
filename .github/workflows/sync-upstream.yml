@@ -12,7 +12,7 @@ env:
 
 on:
   schedule:
-    - cron: '00 12 * * 1'
+#   - cron: '00 12 * * 1'
     - cron: '0 17 * * 1'
   workflow_dispatch:
 
