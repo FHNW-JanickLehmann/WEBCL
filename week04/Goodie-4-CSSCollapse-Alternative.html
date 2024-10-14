@@ -11,6 +11,10 @@
             --arrow-size: 1em;
         }
 
+        body > *:is(p, .likep) { /* :where ignores specificity of union */
+            color: red;
+        }
+
         /* expanded div */
         div.collapsible {
             padding-left: calc(var(--arrow-size) / 2);
@@ -19,7 +23,7 @@
             transition:   max-height 0.5s ease-out;
         }
 
-        input[type=checkbox]:checked + label.toggle + div.collapsible {
+        label.toggle:has(+ input[type=checkbox]:checked) ~ div.collapsible {
             max-height: 0;
             transition:  max-height 0.5s ease-out;
         }
@@ -32,7 +36,7 @@
             cursor: pointer;
         }
 
-        input[type=checkbox].hidden + label.toggle::before {
+        label.toggle:has(+ input[type=checkbox].hidden)::before {
             content:    '';
             display:    inline-block;
             position:    relative;
@@ -44,7 +48,7 @@
             transition: transform 0.5s;
         }
 
-        input[type=checkbox]:checked + label.toggle::before {
+        label.toggle:has(+ input[type=checkbox]:checked)::before {
             transform:  rotate(-90deg);
             transition: transform 0.5s;
         }
@@ -55,8 +59,8 @@
 
 <p>A section that can be collapsed in pure HTML and CSS.</p>
 
-<input id ="toggle" class="hidden" type="checkbox">
 <label for="toggle" class="toggle"> &nbsp; Collapsible Section </label>
+<input id ="toggle" class="hidden" type="checkbox">
 <div class="collapsible">
     <p>collapsible content 1</p>
     <p>collapsible content 2</p>
@@ -69,6 +73,12 @@
     Some text after the section that flows up when the section is collapsed.
     Some text after the section that flows up when the section is collapsed.
 </p>
+<div class="likep">
+    Some text after the section that flows up when the section is collapsed.
+    Some text after the section that flows up when the section is collapsed.
+    Some text after the section that flows up when the section is collapsed.
+    Some text after the section that flows up when the section is collapsed.
+</div>
 
 </body>
 </html>
