@@ -18,7 +18,7 @@ const bindTextInput = (textAttr, inputElement) => {
         ? inputElement.removeAttribute("readonly")
         : inputElement.setAttribute("readonly", true));
 
-    // todo: the label property should be shown as a pop-over on the text element.
+    // the label property should be shown as a pop-over on the text element.
     textAttr.getObs(LABEL).onChange(
         label => inputElement.setAttribute("title", label)
     )
@@ -49,6 +49,8 @@ const personListItemProjector = (masterController, selectionController, rootElem
     // create the input fields and bind to the attribute props
     const firstnameInputElement = document.createElement("input");
     const lastnameInputElement  = document.createElement("input");
+    firstnameInputElement.setAttribute("type", "text");
+    lastnameInputElement.setAttribute("type", "text");
     bindTextInput(person.firstname, firstnameInputElement);
     bindTextInput(person.lastname,  lastnameInputElement);
 
@@ -96,7 +98,7 @@ const personFormProjector = (detailController, rootElement, person) => {
     bindTextInput(person.firstname, divElement.querySelector("#firstname"));
     bindTextInput(person.lastname,  divElement.querySelector("#lastname"));
 
-    // todo: bind label values
+    // bind label values
     bindLabel(person.firstname, divElement.querySelector("label[for=firstname]"));
     bindLabel(person.lastname,  divElement.querySelector("label[for=lastname]"));
 
