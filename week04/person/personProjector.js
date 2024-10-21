@@ -1,4 +1,4 @@
-import {VALUE, VALID, EDITABLE, LABEL} from "../kolibri/presentationModel.js";
+import {EDITABLE, LABEL, VALID, VALUE} from "../kolibri/presentationModel.js";
 
 export { personListItemProjector, personFormProjector }
 
@@ -10,18 +10,18 @@ const bindTextInput = (textAttr, inputElement) => {
     textAttr.getObs(VALID, true).onChange(
         valid => valid
           ? inputElement.classList.remove("invalid")
-          : inputElement.classList.add("invalid")
+          : inputElement.classList.add   ("invalid")
     );
 
     textAttr.getObs(EDITABLE, true).onChange(
         isEditable => isEditable
         ? inputElement.removeAttribute("readonly")
-        : inputElement.setAttribute("readonly", true));
+        : inputElement.setAttribute   ("readonly", true));
 
     // the label property should be shown as a pop-over on the text element.
     textAttr.getObs(LABEL).onChange(
         label => inputElement.setAttribute("title", label)
-    )
+    );
 };
 
 const bindLabel = (textAttr, inputElement) => {
@@ -60,7 +60,7 @@ const personListItemProjector = (masterController, selectionController, rootElem
 
     selectionController.onPersonSelected(
         selected => selected === person
-          ? deleteButton.classList.add("selected")
+          ? deleteButton.classList.add   ("selected")
           : deleteButton.classList.remove("selected")
     );
 
